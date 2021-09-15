@@ -19,7 +19,7 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
   LatLng? _pickedLocation;
-
+  //for stroring the location
   void _selectLocation(LatLng position) {
     setState(() {
       _pickedLocation = position;
@@ -52,9 +52,11 @@ class _MapScreenState extends State<MapScreen> {
           ),
           zoom: 16,
         ),
+        //for tap to be registered
         onTap: widget.isSelecting ? _selectLocation : null,
         markers: (_pickedLocation == null && widget.isSelecting)
-            ? null
+            ? {}
+            //{}=>set each value is unique
             : {
                 Marker(
                   markerId: MarkerId('m1'),
